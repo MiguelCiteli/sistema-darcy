@@ -14,13 +14,16 @@ menu = st.sidebar.radio("Menu", ["🔍 Buscar por Instituto", "🔐 Fazer Login"
 
 def exibir_historia_if():
     texto = """
+    <div style='text-align: justify'>
     O Instituto de Física (IF) foi um dos primeiros institutos da Universidade de Brasília. Seu desenvolvimento contou com a participação de físicos como José Leite Lopes, Roberto Salmeron e Jayme Tiomno, além do apoio do Centro Brasileiros de Pesquisas Físicas (CBPF), que em diversas reuniões com Darcy Ribeiro e Anísio Teixeira, fundadores da UnB, definiram as diretrizes do curso.
 
     Após o golpe militar de 1964, que causou a demissão em massa de praticamente todo o corpo docente da UnB, coube a José Acioli, Luiz Carlos Gomes e José Carlos Azevedo a difícil missão de reerguer o IF.
 
     Em um estudo recente realizado pela Universidade de Stanford, foi feito um levantamento de pesquisadores de todas as áreas e a UnB teve 25 professores, sendo 2 do Instituto de Física, entre os melhores do mundo.
+    </div>
     """
-    return st.markdown(texto)
+    st.markdown(texto, unsafe_allow_html=True)
+
 	
 def exibir_biografias():
     biografias = [
