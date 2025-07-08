@@ -20,8 +20,7 @@ def exibir_historia_if():
 
     Em um estudo recente realizado pela Universidade de Stanford, foi feito um levantamento de pesquisadores de todas as áreas e a UnB teve 25 professores, sendo 2 do Instituto de Física, entre os melhores do mundo.
     """
-    st.markdown(texto)
-    return hist_if
+    return st.markdown(texto)
 	
 def exibir_biografias():
     biografias = [
