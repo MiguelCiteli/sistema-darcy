@@ -236,4 +236,7 @@ if __name__ == "__main__":
     sistema_darcy_ribeiro()
 
 st.set_page_config(page_title="Sistema Darcy Ribeiro", layout="centered")
-st.title("🔬 Sistema Darcy Ribeiro")
+
+st.markdown("# 👋 Seja bem-vindo ao Sistema Integrado Darcy Ribeiro!")
+st.markdown("### 🔬 Explore os institutos, crie perfis e conheça as linhas de pesquisa.")
+
