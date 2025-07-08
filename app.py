@@ -20,8 +20,7 @@ def exibir_historia_if():
 
     Em um estudo recente realizado pela Universidade de Stanford, foi feito um levantamento de pesquisadores de todas as áreas e a UnB teve 25 professores, sendo 2 do Instituto de Física, entre os melhores do mundo.
     """
-    paragrafos = re.split(r'\n\s*\n', texto.strip())
-    hist_if = '\n\n'.join(textwrap.fill(p.strip(), width=70) for p in paragrafos)
+    st.markdown(texto)
     return hist_if
 	
 def exibir_biografias():
@@ -50,7 +49,7 @@ def exibir_biografias():
             "\nde Física, Química e Biologia e o departamento de Matemática. Salmeron nasceu em 16 de Julho de 1922, em São Paulo. "
         ]
 		    
-    return "\n\n".join(biografias)
+    return st.markdown(biografias)
 	
 def exibir_nucleos():
     nucleos = [
