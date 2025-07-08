@@ -82,7 +82,7 @@ def info_caio_ribeiro():
     print("- Holanda Ribeiro, Caio C., Energy conservation and quantum backreaction in Bose-Einstein condensates. Physical Review A 111.2 (2025): 023306.")
     print("\n2. Grupo de Pesquisa Atual:")
     carregar_perfis()
-     print("\n3. Linhas de Pesquisa:")
+    print("\n3. Linhas de Pesquisa:")
     print("- Acessando o vácuo quântico em condensados de Bose-Einstein")
     print("Descrição: Neste projeto buscamos estudar manifestações do vácuo quântico em condensados de Bose-Einstein, sistemas que ocupam posição"
     "\nestratégica na ciência e no ensino de ciência por suas propriedades peculiares e seu carater multidisciplinar. De forma específica, estamos "
