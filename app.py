@@ -3,7 +3,7 @@ import re
 import os
 import json
 import streamlit as st
-from main import exibir_historia_if, exibir_biografias, login, criar_perfil, carregar_perfis
+from main import exibir_historia_if, exibir_biografias, exibir_nucleos, login, criar_perfil, carregar_perfis
 
 st.set_page_config(page_title="Sistema Darcy Ribeiro", layout="centered")
 st.title("🔬 Sistema Darcy Ribeiro")
