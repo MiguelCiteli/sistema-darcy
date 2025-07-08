@@ -188,7 +188,9 @@ if menu == "🔍 Buscar por Instituto":
             st.markdown("### Biografias Selecionadas")
             exibir_biografias()
             st.markdown("### Áreas de Pesquisa")
-            st.text(exibir_nucleos())
+            escolha_nucleo = exibir_nucleos()
+	    if st.button("Acessar núcleo"):
+           tratar_nucleo(escolha_nucleo)
         else:
             st.warning("Instituto ainda não disponível no sistema.")
 
@@ -199,13 +201,19 @@ elif menu == "🔐 Fazer Login":
     matricula = st.text_input("Matrícula")
     senha = st.text_input("Senha", type="password")
 
-    if st.button("Entrar"):
-        nome = login(matricula, senha)
-        if nome:
-            st.success(f"Bem-vindo(a), {nome}!")
-            criar_perfil(nome)
-        else:
-            st.error("Matrícula ou senha incorretas.")
+    def login(matricula, senha):
+    if not os.path.exists("usuarios.json"):
+        return None
+
+    with open("usuarios.json", "r") as f:
+        usuarios = json.load(f)
+
+    for usuario in usuarios:
+        if usuario["matricula"] == matricula and usuario["senha"] == senha:
+            return usuario["nome"]
+
+    return None
+
 
 # --- OPÇÃO 3: VER TODOS OS PERFIS CADASTRADOS ---
 elif menu == "👨‍🎓 Ver Perfis":
