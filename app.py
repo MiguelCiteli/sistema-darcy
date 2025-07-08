@@ -197,9 +197,9 @@ if menu == "🔍 Buscar por Instituto":
         if any(palavra in consulta for palavra in palavras_chave):
             st.markdown("🔗 [Site Oficial do IF](https://if.unb.br/)")
             st.markdown("### História do Instituto de Física")
-            st.text(exibir_historia_if())
+            exibir_historia_if()
             st.markdown("### Biografias Selecionadas")
-            st.text(exibir_biografias())
+            exibir_biografias()
             st.markdown("### Áreas de Pesquisa")
             st.text(exibir_nucleos())
         else:
