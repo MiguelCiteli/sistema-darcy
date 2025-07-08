@@ -189,10 +189,11 @@ if menu == "🔍 Buscar por Instituto":
             exibir_biografias()
             st.markdown("### Áreas de Pesquisa")
             escolha_nucleo = exibir_nucleos()
-	    if st.button("Acessar núcleo"):
-            	tratar_nucleo(escolha_nucleo)
+            if st.button("Acessar núcleo"):
+                tratar_nucleo(escolha_nucleo)
         else:
             st.warning("Instituto ainda não disponível no sistema.")
+
 
 # --- OPÇÃO 2: LOGIN E CRIAÇÃO DE PERFIL ---
 elif menu == "🔐 Fazer Login":
@@ -202,18 +203,54 @@ elif menu == "🔐 Fazer Login":
     senha = st.text_input("Senha", type="password")
 
     def login(matricula, senha):
-    if not os.path.exists("usuarios.json"):
+        if not os.path.exists("usuarios.json"):
+            return None
+
+        with open("usuarios.json", "r") as f:
+            usuarios = json.load(f)
+
+        for usuario in usuarios:
+            if usuario["matricula"] == matricula and usuario["senha"] == senha:
+                return usuario["nome"]
+
         return None
 
-    with open("usuarios.json", "r") as f:
-        usuarios = json.load(f)
+    if st.button("Entrar"):
+        nome_usuario = login(matricula, senha)
+        if nome_usuario:
+            st.success(f"Bem-vindo(a), {nome_usuario}!")
 
-    for usuario in usuarios:
-        if usuario["matricula"] == matricula and usuario["senha"] == senha:
-            return usuario["nome"]
+            st.subheader("Criação de Perfil")
 
-    return None
+            nivel = st.selectbox("Nível", ["Graduação", "Mestrado", "Doutorado"])
+            tema = st.text_input("Tema da Pesquisa")
+            instituicao = st.text_input("Instituição (opcional)")
+            ano = st.text_input("Ano de Ingresso (opcional)")
 
+            if st.button("Criar Perfil"):
+                perfil = {
+                    "nome": nome_usuario,
+                    "nível": nivel,
+                    "tema": tema,
+                    "Instituição": instituicao,
+                    "Ano de Ingresso": ano
+                }
+
+                if not os.path.exists("perfis_caio.json"):
+                    with open("perfis_caio.json", "w") as f:
+                        json.dump([], f)
+
+                with open("perfis_caio.json", "r") as f:
+                    perfis = json.load(f)
+
+                perfis.append(perfil)
+
+                with open("perfis_caio.json", "w") as f:
+                    json.dump(perfis, f, indent=2)
+
+                st.success("✅ Perfil criado com sucesso!")
+        else:
+            st.error("Matrícula ou senha incorretas.")
 
 # --- OPÇÃO 3: VER TODOS OS PERFIS CADASTRADOS ---
 elif menu == "👨‍🎓 Ver Perfis":
@@ -237,4 +274,3 @@ def sistema_darcy_ribeiro():
 if __name__ == "__main__":
     sistema_darcy_ribeiro()
 
-st.set_page_config(page_title="Sistema Darcy Ribeiro", layout="centered")
