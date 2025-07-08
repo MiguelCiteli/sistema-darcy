@@ -2,6 +2,54 @@ import textwrap
 import re
 import os
 import json
+import streamlit as st
+from main import exibir_historia_if, exibir_biografias, login, criar_perfil, carregar_perfis
+
+st.set_page_config(page_title="Sistema Darcy Ribeiro", layout="centered")
+st.title("🔬 Sistema Darcy Ribeiro")
+
+# --- MENU LATERAL ---
+menu = st.sidebar.radio("Menu", ["🔍 Buscar por Instituto", "🔐 Fazer Login", "👨‍🎓 Ver Perfis"])
+
+# --- OPÇÃO 1: BUSCAR POR INSTITUTO ---
+if menu == "🔍 Buscar por Instituto":
+    st.subheader("Busque por um instituto ou departamento da UnB")
+
+    consulta = st.text_input("Digite algo como 'física', 'if', 'química'...").strip().lower()
+    palavras_chave = ["if", "física", "fisica", "instituto de física"]
+
+    if st.button("Buscar"):
+        if any(palavra in consulta for palavra in palavras_chave):
+            st.markdown("🔗 [Site Oficial do IF](https://if.unb.br/)")
+            st.markdown("### História do Instituto de Física")
+            st.text(exibir_historia_if())
+            st.markdown("### Biografias Selecionadas")
+            st.text(exibir_biografias())
+            st.markdown("### Áreas de Pesquisa")
+            st.text(exibir_nucleos())
+        else:
+            st.warning("Instituto ainda não disponível no sistema.")
+
+# --- OPÇÃO 2: LOGIN E CRIAÇÃO DE PERFIL ---
+elif menu == "🔐 Fazer Login":
+    st.subheader("Login para criação de perfil no grupo de pesquisa")
+
+    matricula = st.text_input("Matrícula")
+    senha = st.text_input("Senha", type="password")
+
+    if st.button("Entrar"):
+        nome = login(matricula, senha)
+        if nome:
+            st.success(f"Bem-vindo(a), {nome}!")
+            criar_perfil(nome)
+        else:
+            st.error("Matrícula ou senha incorretas.")
+
+# --- OPÇÃO 3: VER TODOS OS PERFIS CADASTRADOS ---
+elif menu == "👨‍🎓 Ver Perfis":
+    st.subheader("Perfis do Grupo de Pesquisa do Prof. Caio Ribeiro")
+    carregar_perfis()
+
 
 def exibir_historia_if():
     print("\nHistória do IF:")
