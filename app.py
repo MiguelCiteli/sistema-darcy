@@ -190,7 +190,7 @@ if menu == "🔍 Buscar por Instituto":
             st.markdown("### Áreas de Pesquisa")
             escolha_nucleo = exibir_nucleos()
 	    if st.button("Acessar núcleo"):
-           tratar_nucleo(escolha_nucleo)
+            	tratar_nucleo(escolha_nucleo)
         else:
             st.warning("Instituto ainda não disponível no sistema.")
 
