@@ -26,22 +26,33 @@ def exibir_historia_if():
 
 	
 def exibir_biografias():
-    biografias_html = """
-    <div style='text-align: justify; font-size: 16px;'>
+    biografias = [
+            "Darcy Ribeiro - Além de ter sido um dos principais fundadores da Universidade de Brasília, Darcy Ribeiro"
+            "\nliderou o projeto da construção de quase 500 colégios públicos de ensino integral em todo o estado do Rio de"
+            "\nJaneiro, os chamados CIEPs, entre 1983 e 1987, período no qual foi vice-governador. Nesta mesma época,"
+            "\ncriou o Sambódromo, que não só servia como espaço para o desfile das escolas de samba durante o Carnaval, mas "
+            "\ntambém onde funcionavam mais de 200 salas de aula construídas embaixo das arquibancadas. Logo após a conclusão"
+            "\ndo curso de Antropologia, passou 10 anos convivendo com povos indígenas, estudando especialmente os povos Kadiwéu,"
+            "\nUrubu Ka’apor, Ofayé, Bororo e Guarani. Criou também o Parque Indígena do Xingu, o Museu do Índio e o Memorial da"
+            "\nAmérica Latina. Foi preso e exilado durante a ditadura militar, tendo vivido por 12 anos entre o Uruguai, Venezuela,"
+            "\nChile, Peru e México. Nascido em 26 de Outubro de 1922 em Montes Claros, Minas Gerais, Darcy foi antropólogo, educador,"
+            "\nescritor e político.",
+            "\nAnísio Teixeira - Considerado o fundador da primeira escola pública de ensino integral do Brasil, a Escola Parque inaugurada "
+          "\nna Bahia em 1950, Anísio Teixeira foi um dos idealizadores da Escola Nova, movimento educacional de grande projeção no século XX, "
+          "\nque propunha que a ``educação deve ser essencialmente pública, obrigatória, gratuita, leiga e sem qualquer segregação de cor, sexo "
+          "\nou tipo de estudo, e desenvolver-se em estreita vinculação com as comunidades.'' Ao lado de Darcy Ribeiro, contribuiu não só no projeto "
+          "\nda Universidade de Brasília, mas também na elaboração da Lei de Diretrizes e Bases da Educação. Anísio Teixeira nasceu em Caetité, na Bahia, "
+          "\nem 12 de Julho de 1900. ",
+            "\nJosé Leite Lopes - Foi o primeiro físico a predizer a existência do bóson $Z$, partícula mediadora de uma das quatro forças fundamentais da "
+            "\nnatureza, a força fraca. Ao lado de César Lattes, ajudou a construir o CBPF, um dos principais centros de pesquisa em física do país "
+            "\ne que abrigou físicos como Jayme Tiomno, Mário Schenberg, Richard Feynman e David Bohm. Nasceu em Recife, Pernambuco, em 28 de Outubro de 1918. ",
+            "\nRoberto Salmeron - Em colaboração com o CERN, esteve na primeira detecção dos neutrinos do elétron e do múon, partículas fundamentais do Modelo "
+            "\nPadrão. Teve uma importante participação nos anos iniciais da UnB como diretor do Instituto Central de Ciências (ICC), do qual faziam parte os institutos "
+            "\nde Física, Química e Biologia e o departamento de Matemática. Salmeron nasceu em 16 de Julho de 1922, em São Paulo. "
+        ]
+    
+    st.markdown(biografias)
 
-    <p><strong>Darcy Ribeiro</strong> – Além de ter sido um dos principais fundadores da Universidade de Brasília, Darcy Ribeiro liderou o projeto da construção de quase 500 colégios públicos de ensino integral em todo o estado do Rio de Janeiro, os chamados CIEPs, entre 1983 e 1987, período no qual foi vice-governador. Nesta mesma época, criou o Sambódromo, que não só servia como espaço para o desfile das escolas de samba durante o Carnaval, mas também onde funcionavam mais de 200 salas de aula construídas embaixo das arquibancadas. Logo após a conclusão do curso de Antropologia, passou 10 anos convivendo com povos indígenas, estudando especialmente os povos Kadiwéu, Urubu Ka’apor, Ofayé, Bororo e Guarani. Criou também o Parque Indígena do Xingu, o Museu do Índio e o Memorial da América Latina. Foi preso e exilado durante a ditadura militar, tendo vivido por 12 anos entre o Uruguai, Venezuela, Chile, Peru e México. Nascido em 26 de Outubro de 1922 em Montes Claros, Minas Gerais, Darcy foi antropólogo, educador, escritor e político.</p>
-
-    <p><strong>Anísio Teixeira</strong> – Considerado o fundador da primeira escola pública de ensino integral do Brasil, a Escola Parque inaugurada na Bahia em 1950, Anísio Teixeira foi um dos idealizadores da Escola Nova, movimento educacional de grande projeção no século XX, que propunha que a educação deve ser essencialmente pública, obrigatória, gratuita, leiga e sem qualquer segregação de cor, sexo ou tipo de estudo, e desenvolver-se em estreita vinculação com as comunidades. Ao lado de Darcy Ribeiro, contribuiu não só no projeto da Universidade de Brasília, mas também na elaboração da Lei de Diretrizes e Bases da Educação. Anísio Teixeira nasceu em Caetité, na Bahia, em 12 de Julho de 1900.</p>
-
-    <p><strong>José Leite Lopes</strong> – Foi o primeiro físico a predizer a existência do bóson Z, partícula mediadora de uma das quatro forças fundamentais da natureza, a força fraca. Ao lado de César Lattes, ajudou a construir o CBPF, um dos principais centros de pesquisa em física do país e que abrigou físicos como Jayme Tiomno, Mário Schenberg, Richard Feynman e David Bohm. Nasceu em Recife, Pernambuco, em 28 de Outubro de 1918.</p>
-
-    <p><strong>Roberto Salmeron</strong> – Em colaboração com o CERN, esteve na primeira detecção dos neutrinos do elétron e do múon, partículas fundamentais do Modelo Padrão. Teve uma importante participação nos anos iniciais da UnB como diretor do Instituto Central de Ciências (ICC), do qual faziam parte os institutos de Física, Química e Biologia e o departamento de Matemática. Salmeron nasceu em 16 de Julho de 1922, em São Paulo.</p>
-
-    </div>
-    """
-    st.markdown(biografias_html, unsafe_allow_html=True)
-
-	
 def exibir_nucleos():
     nucleos = [
         "1. Física Atômica e Molecular",
