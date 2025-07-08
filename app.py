@@ -3,7 +3,6 @@ import re
 import os
 import json
 import streamlit as st
-from main import exibir_historia_if, exibir_biografias, exibir_nucleos, login, criar_perfil, carregar_perfis
 
 st.set_page_config(page_title="Sistema Darcy Ribeiro", layout="centered")
 st.title("🔬 Sistema Darcy Ribeiro")
@@ -49,7 +48,6 @@ elif menu == "🔐 Fazer Login":
 elif menu == "👨‍🎓 Ver Perfis":
     st.subheader("Perfis do Grupo de Pesquisa do Prof. Caio Ribeiro")
     carregar_perfis()
-
 
 def exibir_historia_if():
     print("\nHistória do IF:")
@@ -222,7 +220,6 @@ def carregar_perfis():
                     print(f"  {chave}: {p[chave]}")
     else:
         print("Nenhum perfil cadastrado ainda.")
-
 
 def sistema_darcy_ribeiro():
     print("Bem-vindo ao Sistema Darcy Ribeiro!")
