@@ -4,9 +4,6 @@ import os
 import json
 import streamlit as st
 
-st.set_page_config(page_title="Sistema Darcy Ribeiro", layout="centered")
-st.title("🔬 Sistema Darcy Ribeiro")
-
 # --- MENU LATERAL ---
 menu = st.sidebar.radio("Menu", ["🔍 Buscar por Instituto", "🔐 Fazer Login", "👨‍🎓 Ver Perfis"])
 
@@ -237,3 +234,6 @@ def sistema_darcy_ribeiro():
 
 if __name__ == "__main__":
     sistema_darcy_ribeiro()
+
+st.set_page_config(page_title="Sistema Darcy Ribeiro", layout="centered")
+st.title("🔬 Sistema Darcy Ribeiro")
