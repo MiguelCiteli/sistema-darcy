@@ -19,7 +19,6 @@ def exibir_historia_if():
     Após o golpe militar de 1964, que causou a demissão em massa de praticamente todo o corpo docente da UnB, coube a José Acioli, Luiz Carlos Gomes e José Carlos Azevedo a difícil missão de reerguer o IF.
 
     Em um estudo recente realizado pela Universidade de Stanford, foi feito um levantamento de pesquisadores de todas as áreas e a UnB teve 25 professores, sendo 2 do Instituto de Física, entre os melhores do mundo.
-    </div>
     """
     st.markdown(texto)
 	
@@ -184,11 +183,15 @@ if menu == "🔍 Buscar por Instituto":
 		st.markdown("### Áreas de Pesquisa")
 	
 		if "nucleo_escolhido" not in st.session_state:
-			st.session_state.nucleo_escolhido = exibir_nucleos()
+			st.session_state.nucleo_escolhido = ""
+			
+		st.session_state.nucleo_escolhido = exibir_nucleos()
 	
 		if st.session_state.nucleo_escolhido in ["7", "ótica quântica", "optica", "ótica"]:
 			if "professor_escolhido" not in st.session_state:
 				st.session_state.professor_escolhido = exibir_professores_otica()
+
+			st.session_state.professor_escolhido = exibir_professores_otica()
 	
 			if st.session_state.professor_escolhido in ["2", "caio ribeiro"]:
 				info_caio_ribeiro()
