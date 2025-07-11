@@ -169,11 +169,11 @@ if menu == "🔍 Buscar por Instituto":
 	if "busca_realizada" not in st.session_state:
 		st.session_state.busca_realizada = False
 	
-    consulta = st.text_input("Digite algo como 'física', 'if', 'química'...").strip().lower()
-    palavras_chave = ["if", "física", "fisica", "instituto de física"]
+    	consulta = st.text_input("Digite algo como 'física', 'if', 'química'...").strip().lower()
+    	palavras_chave = ["if", "física", "fisica", "instituto de física"]
 
-    if st.button("Buscar"):
-	st.session_state.busca_realizada = any(p in consulta for p in palavras_chave)
+	if st.button("Buscar"):
+		st.session_state.busca_realizada = any(p in consulta for p in palavras_chave)
 				
         if st.session_state.busca_realizada:
             st.markdown("🔗 [Site Oficial do IF](https://if.unb.br/)")
