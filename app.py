@@ -108,7 +108,7 @@ def criar_perfil(nome_usuario):
         if instituicao:
             perfil["Instituição"] = instituicao
         if ano:
-			perfil["Ano de Ingresso"] = ano
+    	    perfil["Ano de Ingresso"] = ano
 
         if not os.path.exists("perfis_caio.json"):
             with open("perfis_caio.json", "w") as f:
@@ -177,21 +177,21 @@ if menu == "🔍 Buscar por Instituto":
             exibir_biografias()
             st.markdown("### Áreas de Pesquisa")
             escolha_nucleo = exibir_nucleos()
-			
+
             if escolha_nucleo in ["7", "ótica quântica", "optica", "ótica"]:
-				professor = exibir_professores_otica()
+	        professor = exibir_professores_otica()
     
-				if professor in ["2", "caio ribeiro"]:
-					info_caio_ribeiro()
-					criar_perfil("Caio Ribeiro")
+	 	if professor in ["2", "caio ribeiro"]:
+		    info_caio_ribeiro()
+		    criar_perfil("Caio Ribeiro")
 				
-				elif professor in ["1", "alexandre dodonov"]:
-					st.info("Informações de Alexandre Dodonov ainda não disponíveis.")
+		elif professor in ["1", "alexandre dodonov"]:
+		    st.info("Informações de Alexandre Dodonov ainda não disponíveis.")
 				
-				else:
-					st.warning("Professor não encontrado.")
-			else:
-				st.warning("Núcleo não encontrado.")
+		else:
+		    st.warning("Professor não encontrado.")
+    	    else:
+                st.warning("Núcleo não encontrado.")
 
 # --- OPÇÃO 2: LOGIN E CRIAÇÃO DE PERFIL ---
 elif menu == "🔐 Fazer Login":
