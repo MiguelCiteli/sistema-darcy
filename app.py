@@ -177,11 +177,11 @@ if menu == "🔍 Buscar por Instituto":
 				
 	if st.session_state.busca_realizada:
 		st.markdown("🔗 [Site Oficial do IF](https://if.unb.br/)")
-	        st.markdown("### História do Instituto de Física")
-	        exibir_historia_if()
-	        st.markdown("### Biografias Selecionadas")
-	        exibir_biografias()
-	        st.markdown("### Áreas de Pesquisa")
+		st.markdown("### História do Instituto de Física")
+	    exibir_historia_if()
+	    st.markdown("### Biografias Selecionadas")
+	    exibir_biografias()
+	    st.markdown("### Áreas de Pesquisa")
 	
 		if "nucleo_escolhido" not in st.session_state:
 			st.session_state.nucleo_escolhido = exibir_nucleos()
