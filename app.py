@@ -49,12 +49,12 @@ def exibir_nucleos():
         "nucleo_11": "11. Ensino de Física"
     }
 
-	opcoes = list(nucleos.values())
-   	escolha = st.selectbox("Escolha um núcleo:", opcoes)
+opcoes = list(nucleos.values())
+escolha = st.selectbox("Escolha um núcleo:", opcoes)
 
-	for key, val in nucleos.items():
-    		if val == escolha:
-          		return key
+for key, val in nucleos.items():
+	if val == escolha:
+		return key
 	
 def exibir_professores_otica():
     profs = ["1. Alexandre Dodonov", "2. Caio Ribeiro"]
