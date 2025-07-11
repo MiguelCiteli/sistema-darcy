@@ -36,24 +36,25 @@ def exibir_biografias():
 
 def exibir_nucleos():
     nucleos = {
-		"nucleo_1": "1. Física Atômica e Molecular",
-		"nucleo_2": "2. Relatividade Geral, Gravitação e Cosmologia",
-		"nucleo_3": "3. Matéria Condensada Experimental",
-		"nucleo_4": "4. Matéria Condensada Teórica",
-		"nucleo_5": "5. Física Matemática e Computacional",
-		"nucleo_6": "6. Teoria Quântica de Campos",
-		"nucleo_7": "7. Óptica Quântica",
-		"nucleo_8": "8. Física de Plasma",
-		"nucleo_9": "9. Física Estatística e Computacional",
-		"nucleo_10": "10. Física Geral e Fundamentos da Física",
-		"nucleo_11": "11. Ensino de Física"
-	}
-	opcoes = list(nucleos.values())
-	escolha = st.selectbox("Escolha um núcleo:", opcoes)
-	
-	for key, val in nucleos.items():
-		if val == escolha:
-			return key
+        "nucleo_1": "1. Física Atômica e Molecular",
+        "nucleo_2": "2. Relatividade Geral, Gravitação e Cosmologia",
+        "nucleo_3": "3. Matéria Condensada Experimental",
+        "nucleo_4": "4. Matéria Condensada Teórica",
+        "nucleo_5": "5. Física Matemática e Computacional",
+        "nucleo_6": "6. Teoria Quântica de Campos",
+        "nucleo_7": "7. Óptica Quântica",
+        "nucleo_8": "8. Física de Plasma",
+        "nucleo_9": "9. Física Estatística e Computacional",
+        "nucleo_10": "10. Física Geral e Fundamentos da Física",
+        "nucleo_11": "11. Ensino de Física"
+    }
+
+    opcoes = list(nucleos.values())
+    escolha = st.selectbox("Escolha um núcleo:", opcoes)
+
+    for chave, valor in nucleos.items():
+        if valor == escolha:
+            return chave
 
 def exibir_professores_otica():
 	profs = ["1. Alexandre Dodonov", "2. Caio Ribeiro"]
