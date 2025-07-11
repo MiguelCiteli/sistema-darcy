@@ -172,31 +172,31 @@ if menu == "🔍 Buscar por Instituto":
 	consulta = st.text_input("Digite algo como 'física', 'if', 'química'...").strip().lower()
 	palavras_chave = ["if", "física", "fisica", "instituto de física"]
 	
-	    if st.button("Buscar"):
-	        if any(p in consulta for p in palavras_chave):
-	            st.markdown("🔗 [Site Oficial do IF](https://if.unb.br/)")
-	            st.markdown("### História do Instituto de Física")
-	            exibir_historia_if()
-	            st.markdown("### Biografias Selecionadas")
-	            exibir_biografias()
-	            st.markdown("### Áreas de Pesquisa")
-	
-	            nucleo = exibir_nucleos()
-	
-	            if nucleo == "nucleo_7":
-	                professor = exibir_professores_otica()
-	
-	                if "caio" in professor:
-	                    info_caio_ribeiro()
-	                    criar_perfil("Caio Ribeiro")
-	                elif "alexandre" in professor:
-	                    st.info("Informações de Alexandre Dodonov ainda não disponíveis.")
-	                else:
-	                    st.warning("Professor não encontrado.")
-	            else:
-	                st.info("Este núcleo ainda não tem professores cadastrados.")
-	        else:
-	            st.warning("Nenhum instituto encontrado para essa busca.")
+	if st.button("Buscar"):
+		if any(p in consulta for p in palavras_chave):
+			st.markdown("🔗 [Site Oficial do IF](https://if.unb.br/)")
+			st.markdown("### História do Instituto de Física")
+			exibir_historia_if()
+			st.markdown("### Biografias Selecionadas")
+			exibir_biografias()
+			st.markdown("### Áreas de Pesquisa")
+			
+			nucleo = exibir_nucleos()
+			
+			if nucleo == "nucleo_7":
+				professor = exibir_professores_otica()
+				
+				if "caio" in professor:
+					info_caio_ribeiro()
+					criar_perfil("Caio Ribeiro")
+				elif "alexandre" in professor:
+					st.info("Informações de Alexandre Dodonov ainda não disponíveis.")
+				else:
+					st.warning("Professor não encontrado.")
+			else:
+				st.info("Este núcleo ainda não tem professores cadastrados.")
+		else:
+			st.warning("Nenhum instituto encontrado para essa busca.")
 
 # --- OPÇÃO 2: LOGIN E CRIAÇÃO DE PERFIL ---
 elif menu == "🔐 Fazer Login":
