@@ -21,7 +21,7 @@ def exibir_historia_if():
     Em um estudo recente realizado pela Universidade de Stanford, foi feito um levantamento de pesquisadores de todas as áreas e a UnB teve 25 professores, sendo 2 do Instituto de Física, entre os melhores do mundo.
     </div>
     """
-    st.markdown(texto, unsafe_allow_html=True)
+    st.markdown(texto)
 	
 def exibir_biografias():
     biografias = """
@@ -32,10 +32,8 @@ def exibir_biografias():
     José Leite Lopes - Foi o primeiro físico a predizer a existência do bóson Z, partícula mediadora de uma das quatro forças fundamentais da natureza, a força fraca. Ao lado de César Lattes, ajudou a construir o CBPF, um dos principais centros de pesquisa em física do país e que abrigou físicos como Jayme Tiomno, Mário Schenberg, Richard Feynman e David Bohm. Nasceu em Recife, Pernambuco, em 28 de Outubro de 1918.
 
     Roberto Salmeron - Em colaboração com o CERN, esteve na primeira detecção dos neutrinos do elétron e do múon, partículas fundamentais do Modelo Padrão. Teve uma importante participação nos anos iniciais da UnB como diretor do Instituto Central de Ciências (ICC), do qual faziam parte os institutos de Física, Química e Biologia e o departamento de Matemática. Salmeron nasceu em 16 de Julho de 1922, em São Paulo.
-
-   </div>
     """
-    st.markdown(biografias, unsafe_allow_html=True)
+    st.markdown(biografias)
 
 def exibir_nucleos():
     nucleos = [
@@ -53,12 +51,12 @@ def exibir_nucleos():
     ]
 	
     escolha = st.selectbox("Escolha um núcleo (nome ou número):", nucleos)
-    return escolha.split(".")[1].strip().lower()
+    return escolha.lower()
 	
 def exibir_professores_otica():
     profs = ["1. Alexandre Dodonov", "2. Caio Ribeiro"]
     escolha = st.selectbox("Professores deste núcleo:", profs)
-    return escolha.split(".")[1].strip().lower()
+    return escolha.lower()
 	
 def info_caio_ribeiro():
     st.markdown("### 📚 Informações sobre Caio Ribeiro")
@@ -92,26 +90,48 @@ def info_caio_ribeiro():
     
     carregar_perfis()
 	
-def tratar_nucleo(escolha):
-    if escolha in ["7", "ótica quântica", "optica", "ótica"]:
-        prof = exibir_professores_otica()
-        if prof in ["2", "caio ribeiro"]:
-            info_caio_ribeiro()
-            criar_perfil()
-        elif prof in ["1", "alexandre dodonov"]:
-            print("Informações de Alexandre Dodonov ainda não disponíveis.")
+def criar_perfil(nome_usuario):
+    st.subheader("Criação de Perfil")
+	
+    nivel = st.selectbox("Nível", ["Graduação", "Mestrado", "Doutorado"])
+    tema = st.text_input("Tema da Pesquisa")
+    instituicao = st.text_input("Instituição (opcional)")
+    ano = st.text_input("Ano de Ingresso (opcional)")
+
+    if st.button("Criar Perfil"):
+        perfil = {
+            "nome": nome_usuario,
+            "nível": nivel,
+            "tema": tema,
+        }
+		
+        if instituicao:
+            perfil["Instituição"] = instituicao
+        if ano:
+			perfil["Ano de Ingresso"] = ano
+
+        if not os.path.exists("perfis_caio.json"):
+            with open("perfis_caio.json", "w") as f:
+                json.dump([], f)
+
+        with open("perfis_caio.json", "r") as f:
+            try:
+                perfis = json.load(f)
+            except json.JSONDecodeError:
+                perfis = []
+
+        if any(p["nome"] == nome_usuario for p in perfis):
+            st.warning("Já existe um perfil com este nome.")
         else:
-            print("Professor não encontrado.")
-    else:
-        print("Núcleo não encontrado.")
+            perfis.append(perfil)
 
-def login():
-    print("\n🔐 Login necessário para criar perfil no grupo de pesquisa")
-    matricula = input("Matrícula: ").strip()
-    senha = input("Senha: ").strip()
+            with open("perfis_caio.json", "w") as f:
+                json.dump(perfis, f, indent=2, ensure_ascii=False)
 
+            st.success("Perfil criado com sucesso!")
+
+def login(matricula, senha):
     if not os.path.exists("usuarios.json"):
-        print("⚠️ Nenhum usuário cadastrado ainda.")
         return None
 
     with open("usuarios.json", "r") as f:
@@ -119,64 +139,32 @@ def login():
 
     for usuario in usuarios:
         if usuario["matricula"] == matricula and usuario["senha"] == senha:
-            print(f"\n✅ Login bem-sucedido! Bem-vindo(a), {usuario['nome']}.\n")
             return usuario["nome"]
-    
-    print("❌ Matrícula ou senha incorreta.")
     return None
-
-def criar_perfil(nome_usuario):
-    print("\nVamos criar seu perfil de pesquisa:")
-    nivel = input("Nível (Graduação / Mestrado / Doutorado): ").strip()
-    tema = input("Tema da Pesquisa: ").strip()
-
-    adicionais = {}
-    while True:
-        campo = input("Deseja adicionar mais algum campo? (ex: Instituição, Ano de Ingresso) [Enter para pular]: ").strip()
-        if campo == "":
-            break
-        valor = input(f"{campo}: ").strip()
-        adicionais[campo] = valor
-
-    perfil = {
-        "nome": nome_usuario,
-        "nível": nivel,
-        "tema": tema,
-        **adicionais
-    }
-
-    if not os.path.exists("perfis_caio.json"):
-        with open("perfis_caio.json", "w") as f:
-            json.dump([], f)
-
-    with open("perfis_caio.json", "r") as f:
-        perfis = json.load(f)
-
-    perfis.append(perfil)
-
-    with open("perfis_caio.json", "w") as f:
-        json.dump(perfis, f, indent=2)
-
-    print("✅ Perfil criado com sucesso!")
 
 def carregar_perfis():
     if os.path.exists("perfis_caio.json"):
         with open("perfis_caio.json", "r") as f:
-            perfis = json.load(f)
-        for p in perfis:
-            print(f"\n- Nome: {p['nome']}")
-            print(f"  Nível: {p['nível']}")
-            print(f"  Tema: {p['tema']}")
-            for chave in p:
-                if chave not in ['nome', 'nível', 'tema']:
-                    print(f"  {chave}: {p[chave]}")
-    else:
-        print("Nenhum perfil cadastrado ainda.")
+            try:
+                perfis = json.load(f)
+            except json.JSONDecodeError:
+                st.warning("Erro ao carregar os perfis.")
+                return
 
+        for p in perfis:
+            st.markdown("---")
+            st.markdown(f"**👤 Nome:** {p.get('nome', 'N/A')}")
+            st.markdown(f"- **Nível:** {p.get('nível', 'N/A')}")
+            st.markdown(f"- **Tema da Pesquisa:** {p.get('tema', 'N/A')}")
+            for chave, valor in p.items():
+                if chave not in ["nome", "nível", "tema"]:
+                    st.markdown(f"- **{chave}:** {valor}")
+    else:
+        st.info("Nenhum perfil cadastrado ainda.")
+		
 # --- OPÇÃO 1: BUSCAR POR INSTITUTO ---
 if menu == "🔍 Buscar por Instituto":
     st.subheader("Busque por um instituto ou departamento da UnB")
-
     consulta = st.text_input("Digite algo como 'física', 'if', 'química'...").strip().lower()
     palavras_chave = ["if", "física", "fisica", "instituto de física"]
 
@@ -189,88 +177,44 @@ if menu == "🔍 Buscar por Instituto":
             exibir_biografias()
             st.markdown("### Áreas de Pesquisa")
             escolha_nucleo = exibir_nucleos()
-            if st.button("Acessar núcleo"):
-                tratar_nucleo(escolha_nucleo)
-        else:
-            st.warning("Instituto ainda não disponível no sistema.")
-
+			
+            if escolha_nucleo in ["7", "ótica quântica", "optica", "ótica"]:
+				professor = exibir_professores_otica()
+    
+				if professor in ["2", "caio ribeiro"]:
+					info_caio_ribeiro()
+					criar_perfil("Caio Ribeiro")
+				
+				elif professor in ["1", "alexandre dodonov"]:
+					st.info("Informações de Alexandre Dodonov ainda não disponíveis.")
+				
+				else:
+					st.warning("Professor não encontrado.")
+			else:
+				st.warning("Núcleo não encontrado.")
 
 # --- OPÇÃO 2: LOGIN E CRIAÇÃO DE PERFIL ---
 elif menu == "🔐 Fazer Login":
     st.subheader("Login para criação de perfil no grupo de pesquisa")
-
     matricula = st.text_input("Matrícula")
     senha = st.text_input("Senha", type="password")
 
-    def login(matricula, senha):
-        if not os.path.exists("usuarios.json"):
-            return None
-
-        with open("usuarios.json", "r") as f:
-            usuarios = json.load(f)
-
-        for usuario in usuarios:
-            if usuario["matricula"] == matricula and usuario["senha"] == senha:
-                return usuario["nome"]
-
-        return None
-
     if st.button("Entrar"):
-        nome_usuario = login(matricula, senha)
-        if nome_usuario:
-            st.success(f"Bem-vindo(a), {nome_usuario}!")
+        nome = None
+        if os.path.exists("usuarios.json"):
+            with open("usuarios.json", "r") as f:
+                usuarios = json.load(f)
+            for usuario in usuarios:
+                if usuario["matricula"] == matricula and usuario["senha"] == senha:
+                    nome = usuario["nome"]
 
-            st.subheader("Criação de Perfil")
-
-            nivel = st.selectbox("Nível", ["Graduação", "Mestrado", "Doutorado"])
-            tema = st.text_input("Tema da Pesquisa")
-            instituicao = st.text_input("Instituição (opcional)")
-            ano = st.text_input("Ano de Ingresso (opcional)")
-
-            if st.button("Criar Perfil"):
-                perfil = {
-                    "nome": nome_usuario,
-                    "nível": nivel,
-                    "tema": tema,
-                    "Instituição": instituicao,
-                    "Ano de Ingresso": ano
-                }
-
-                if not os.path.exists("perfis_caio.json"):
-                    with open("perfis_caio.json", "w") as f:
-                        json.dump([], f)
-
-                with open("perfis_caio.json", "r") as f:
-                    perfis = json.load(f)
-
-                perfis.append(perfil)
-
-                with open("perfis_caio.json", "w") as f:
-                    json.dump(perfis, f, indent=2)
-
-                st.success("✅ Perfil criado com sucesso!")
+        if nome:
+            st.success(f"Bem-vindo(a), {nome}!")
+            criar_perfil(nome)
         else:
             st.error("Matrícula ou senha incorretas.")
-
+			
 # --- OPÇÃO 3: VER TODOS OS PERFIS CADASTRADOS ---
 elif menu == "👨‍🎓 Ver Perfis":
     st.subheader("Perfis do Grupo de Pesquisa do Prof. Caio Ribeiro")
     carregar_perfis()
-
-def sistema_darcy_ribeiro():
-    print("Bem-vindo ao Sistema Darcy Ribeiro!")
-    depto = input("Por favor, diga um departamento ou instituto da UnB: ").strip().lower()
-    palavras_chave = ["if", "física", "fisica", "instituto de física"]
-
-    if any(palavra in depto for palavra in palavras_chave):
-        print("\nSite Oficial: https://if.unb.br/")
-        exibir_historia_if()
-        exibir_biografias()
-        escolha_nucleo = exibir_nucleos()
-        tratar_nucleo(escolha_nucleo)
-    else:
-        print("Departamento ainda não disponível no sistema.")
-
-if __name__ == "__main__":
-    sistema_darcy_ribeiro()
-
