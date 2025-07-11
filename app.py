@@ -92,7 +92,7 @@ def info_caio_ribeiro():
 	
 def criar_perfil(nome_usuario):
     st.subheader("Criação de Perfil")
-	
+
     nivel = st.selectbox("Nível", ["Graduação", "Mestrado", "Doutorado"])
     tema = st.text_input("Tema da Pesquisa")
     instituicao = st.text_input("Instituição (opcional)")
@@ -104,11 +104,11 @@ def criar_perfil(nome_usuario):
             "nível": nivel,
             "tema": tema,
         }
-		
+
         if instituicao:
             perfil["Instituição"] = instituicao
         if ano:
-    	    perfil["Ano de Ingresso"] = ano
+            perfil["Ano de Ingresso"] = ano
 
         if not os.path.exists("perfis_caio.json"):
             with open("perfis_caio.json", "w") as f:
@@ -161,7 +161,7 @@ def carregar_perfis():
                     st.markdown(f"- **{chave}:** {valor}")
     else:
         st.info("Nenhum perfil cadastrado ainda.")
-		
+
 # --- OPÇÃO 1: BUSCAR POR INSTITUTO ---
 if menu == "🔍 Buscar por Instituto":
     st.subheader("Busque por um instituto ou departamento da UnB")
@@ -179,18 +179,18 @@ if menu == "🔍 Buscar por Instituto":
             escolha_nucleo = exibir_nucleos()
 
             if escolha_nucleo in ["7", "ótica quântica", "optica", "ótica"]:
-	        professor = exibir_professores_otica()
-    
-	 	if professor in ["2", "caio ribeiro"]:
-		    info_caio_ribeiro()
-		    criar_perfil("Caio Ribeiro")
-				
-		elif professor in ["1", "alexandre dodonov"]:
-		    st.info("Informações de Alexandre Dodonov ainda não disponíveis.")
-				
-		else:
-		    st.warning("Professor não encontrado.")
-    	    else:
+                professor = exibir_professores_otica()
+
+                if professor in ["2", "caio ribeiro"]:
+                    info_caio_ribeiro()
+                    criar_perfil("Caio Ribeiro")
+
+                elif professor in ["1", "alexandre dodonov"]:
+                    st.info("Informações de Alexandre Dodonov ainda não disponíveis.")
+
+                else:
+                    st.warning("Professor não encontrado.")
+            else:
                 st.warning("Núcleo não encontrado.")
 
 # --- OPÇÃO 2: LOGIN E CRIAÇÃO DE PERFIL ---
@@ -200,20 +200,13 @@ elif menu == "🔐 Fazer Login":
     senha = st.text_input("Senha", type="password")
 
     if st.button("Entrar"):
-        nome = None
-        if os.path.exists("usuarios.json"):
-            with open("usuarios.json", "r") as f:
-                usuarios = json.load(f)
-            for usuario in usuarios:
-                if usuario["matricula"] == matricula and usuario["senha"] == senha:
-                    nome = usuario["nome"]
-
+        nome = login(matricula, senha)
         if nome:
             st.success(f"Bem-vindo(a), {nome}!")
             criar_perfil(nome)
         else:
             st.error("Matrícula ou senha incorretas.")
-			
+
 # --- OPÇÃO 3: VER TODOS OS PERFIS CADASTRADOS ---
 elif menu == "👨‍🎓 Ver Perfis":
     st.subheader("Perfis do Grupo de Pesquisa do Prof. Caio Ribeiro")
