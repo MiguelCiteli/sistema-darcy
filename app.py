@@ -35,22 +35,26 @@ def exibir_biografias():
     st.markdown(biografias)
 
 def exibir_nucleos():
-    nucleos = [
-        "1. Física Atômica e Molecular",
-        "2. Relatividade Geral, Gravitação e Cosmologia",
-        "3. Matéria Condensada Experimental",
-        "4. Matéria Condensada Teórica",
-        "5. Física Matemática e Computacional",
-        "6. Teoria Quântica de Campos",
-        "7. Óptica Quântica",
-        "8. Física de Plasma",
-        "9. Física Estatística e Computacional",
-        "10. Física Geral e Fundamentos da Física",
-        "11. Ensino de Física"
-    ]
-	
-    escolha = st.selectbox("Escolha um núcleo (nome ou número):", nucleos)
-    return escolha.lower()
+    nucleos = {
+        "nucleo_1": "1. Física Atômica e Molecular",
+        "nucleo_2": "2. Relatividade Geral, Gravitação e Cosmologia",
+        "nucleo_3": "3. Matéria Condensada Experimental",
+        "nucleo_4": "4. Matéria Condensada Teórica",
+        "nucleo_5": "5. Física Matemática e Computacional",
+        "nucleo_6": "6. Teoria Quântica de Campos",
+        "nucleo_7": "7. Óptica Quântica",
+        "nucleo_8": "8. Física de Plasma",
+        "nucleo_9": "9. Física Estatística e Computacional",
+        "nucleo_10": "10. Física Geral e Fundamentos da Física",
+        "nucleo_11": "11. Ensino de Física"
+    }
+
+	opcoes = list(nucleos.values())
+   	escolha = st.selectbox("Escolha um núcleo:", opcoes)
+
+	for key, val in nucleos.items():
+    		if val == escolha:
+          		return key
 	
 def exibir_professores_otica():
     profs = ["1. Alexandre Dodonov", "2. Caio Ribeiro"]
@@ -165,44 +169,34 @@ def carregar_perfis():
 if menu == "🔍 Buscar por Instituto":
 	st.subheader("Busque por um instituto ou departamento da UnB")
 	
-	if "busca_realizada" not in st.session_state:
-		st.session_state.busca_realizada = False
-	
 	consulta = st.text_input("Digite algo como 'física', 'if', 'química'...").strip().lower()
 	palavras_chave = ["if", "física", "fisica", "instituto de física"]
+	
+    if st.button("Buscar"):
+        if any(p in consulta for p in palavras_chave):
+            st.markdown("🔗 [Site Oficial do IF](https://if.unb.br/)")
+            st.markdown("### História do Instituto de Física")
+            exibir_historia_if()
+            st.markdown("### Biografias Selecionadas")
+            exibir_biografias()
+            st.markdown("### Áreas de Pesquisa")
 
-	if st.button("Buscar"):
-		st.session_state.busca_realizada = any(p in consulta for p in palavras_chave)
-				
-	if st.session_state.busca_realizada:
-		st.markdown("🔗 [Site Oficial do IF](https://if.unb.br/)")
-		st.markdown("### História do Instituto de Física")
-		exibir_historia_if()
-		st.markdown("### Biografias Selecionadas")
-		exibir_biografias()
-		st.markdown("### Áreas de Pesquisa")
-	
-		if "nucleo_escolhido" not in st.session_state:
-			st.session_state.nucleo_escolhido = ""
-			
-		st.session_state.nucleo_escolhido = exibir_nucleos()
-	
-		if st.session_state.nucleo_escolhido in ["7", "ótica quântica", "optica", "ótica"]:
-			if "professor_escolhido" not in st.session_state:
-				st.session_state.professor_escolhido = exibir_professores_otica()
+            nucleo = exibir_nucleos()
 
-			st.session_state.professor_escolhido = exibir_professores_otica()
-	
-			if st.session_state.professor_escolhido in ["2", "caio ribeiro"]:
-				info_caio_ribeiro()
-				criar_perfil("Caio Ribeiro")
-	
-			elif st.session_state.professor_escolhido in ["1", "alexandre dodonov"]:
-				st.info("Informações de Alexandre Dodonov ainda não disponíveis.")
-			else:
-				st.warning("Professor não encontrado.")
-		else:
-			st.warning("Núcleo não encontrado.")
+            if nucleo == "nucleo_7":
+                professor = exibir_professores_otica()
+
+                if "caio" in professor:
+                    info_caio_ribeiro()
+                    criar_perfil("Caio Ribeiro")
+                elif "alexandre" in professor:
+                    st.info("Informações de Alexandre Dodonov ainda não disponíveis.")
+                else:
+                    st.warning("Professor não encontrado.")
+            else:
+                st.info("Este núcleo ainda não tem professores cadastrados.")
+        else:
+            st.warning("Nenhum instituto encontrado para essa busca.")
 
 # --- OPÇÃO 2: LOGIN E CRIAÇÃO DE PERFIL ---
 elif menu == "🔐 Fazer Login":
