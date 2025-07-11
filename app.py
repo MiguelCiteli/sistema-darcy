@@ -55,11 +55,11 @@ escolha = st.selectbox("Escolha um núcleo:", opcoes)
 for key, val in nucleos.items():
 	if val == escolha:
 		return key
-	
+		
 def exibir_professores_otica():
-    profs = ["1. Alexandre Dodonov", "2. Caio Ribeiro"]
-    escolha = st.selectbox("Professores deste núcleo:", profs)
-    return escolha.lower()
+	profs = ["1. Alexandre Dodonov", "2. Caio Ribeiro"]
+	escolha = st.selectbox("Professores deste núcleo:", profs)
+	return escolha.lower()
 	
 def info_caio_ribeiro():
     st.markdown("### 📚 Informações sobre Caio Ribeiro")
