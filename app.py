@@ -169,37 +169,37 @@ if menu == "🔍 Buscar por Instituto":
 	if "busca_realizada" not in st.session_state:
 		st.session_state.busca_realizada = False
 	
-	    consulta = st.text_input("Digite algo como 'física', 'if', 'química'...").strip().lower()
-	    palavras_chave = ["if", "física", "fisica", "instituto de física"]
+	consulta = st.text_input("Digite algo como 'física', 'if', 'química'...").strip().lower()
+	palavras_chave = ["if", "física", "fisica", "instituto de física"]
 
 	if st.button("Buscar"):
 		st.session_state.busca_realizada = any(p in consulta for p in palavras_chave)
 				
-    if st.session_state.busca_realizada:
-        st.markdown("🔗 [Site Oficial do IF](https://if.unb.br/)")
-        st.markdown("### História do Instituto de Física")
-        exibir_historia_if()
-        st.markdown("### Biografias Selecionadas")
-        exibir_biografias()
-        st.markdown("### Áreas de Pesquisa")
-
+	if st.session_state.busca_realizada:
+		st.markdown("🔗 [Site Oficial do IF](https://if.unb.br/)")
+	        st.markdown("### História do Instituto de Física")
+	        exibir_historia_if()
+	        st.markdown("### Biografias Selecionadas")
+	        exibir_biografias()
+	        st.markdown("### Áreas de Pesquisa")
+	
 		if "nucleo_escolhido" not in st.session_state:
 			st.session_state.nucleo_escolhido = exibir_nucleos()
-
+	
 		if st.session_state.nucleo_escolhido in ["7", "ótica quântica", "optica", "ótica"]:
 			if "professor_escolhido" not in st.session_state:
 				st.session_state.professor_escolhido = exibir_professores_otica()
-
+	
 			if st.session_state.professor_escolhido in ["2", "caio ribeiro"]:
 				info_caio_ribeiro()
 				criar_perfil("Caio Ribeiro")
-
-		elif st.session_state.professor_escolhido in ["1", "alexandre dodonov"]:
-			st.info("Informações de Alexandre Dodonov ainda não disponíveis.")
+	
+			elif st.session_state.professor_escolhido in ["1", "alexandre dodonov"]:
+				st.info("Informações de Alexandre Dodonov ainda não disponíveis.")
+			else:
+				st.warning("Professor não encontrado.")
 		else:
-			st.warning("Professor não encontrado.")
-	else:
-		st.warning("Núcleo não encontrado.")
+			st.warning("Núcleo não encontrado.")
 
 # --- OPÇÃO 2: LOGIN E CRIAÇÃO DE PERFIL ---
 elif menu == "🔐 Fazer Login":
