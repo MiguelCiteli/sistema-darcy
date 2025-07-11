@@ -98,7 +98,7 @@ def criar_perfil(nome_usuario):
     instituicao = st.text_input("Instituição (opcional)")
     ano = st.text_input("Ano de Ingresso (opcional)")
 
-    if st.button("Criar Perfil"):
+    if st.button("Criar Perfil", key="botao_criar"):
         perfil = {
             "nome": nome_usuario,
             "nível": nivel,
@@ -165,11 +165,17 @@ def carregar_perfis():
 # --- OPÇÃO 1: BUSCAR POR INSTITUTO ---
 if menu == "🔍 Buscar por Instituto":
     st.subheader("Busque por um instituto ou departamento da UnB")
+	
+	if "busca_realizada" not in st.session_state:
+		st.session_state.busca_realizada = False
+	
     consulta = st.text_input("Digite algo como 'física', 'if', 'química'...").strip().lower()
     palavras_chave = ["if", "física", "fisica", "instituto de física"]
 
     if st.button("Buscar"):
-        if any(palavra in consulta for palavra in palavras_chave):
+		st.session_state.busca_realizada = any(p in consulta for p in palavras_chave)
+				
+        if st.session_state.busca_realizada:
             st.markdown("🔗 [Site Oficial do IF](https://if.unb.br/)")
             st.markdown("### História do Instituto de Física")
             exibir_historia_if()
@@ -178,20 +184,23 @@ if menu == "🔍 Buscar por Instituto":
             st.markdown("### Áreas de Pesquisa")
             escolha_nucleo = exibir_nucleos()
 
-            if escolha_nucleo in ["7", "ótica quântica", "optica", "ótica"]:
-                professor = exibir_professores_otica()
+			if "nucleo_escolhido" not in st.session_state:
+				st.session_state.nucleo_escolhido = exibir_nucleos()
 
-                if professor in ["2", "caio ribeiro"]:
-                    info_caio_ribeiro()
-                    criar_perfil("Caio Ribeiro")
+			if st.session_state.nucleo_escolhido in ["7", "ótica quântica", "optica", "ótica"]:
+				if "professor_escolhido" not in st.session_state:
+					st.session_state.professor_escolhido = exibir_professores_otica()
 
-                elif professor in ["1", "alexandre dodonov"]:
-                    st.info("Informações de Alexandre Dodonov ainda não disponíveis.")
+				if st.session_state.professor_escolhido in ["2", "caio ribeiro"]:
+					info_caio_ribeiro()
+					criar_perfil("Caio Ribeiro")
 
-                else:
-                    st.warning("Professor não encontrado.")
-            else:
-                st.warning("Núcleo não encontrado.")
+				elif st.session_state.professor_escolhido in ["1", "alexandre dodonov"]:
+					st.info("Informações de Alexandre Dodonov ainda não disponíveis.")
+				else:
+					st.warning("Professor não encontrado.")
+			else:
+				st.warning("Núcleo não encontrado.")
 
 # --- OPÇÃO 2: LOGIN E CRIAÇÃO DE PERFIL ---
 elif menu == "🔐 Fazer Login":
