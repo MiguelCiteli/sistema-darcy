@@ -48,6 +48,7 @@ def exibir_nucleos():
 		"nucleo_10": "10. Física Geral e Fundamentos da Física",
 		"nucleo_11": "11. Ensino de Física"
     }
+	
 	opcoes = list(nucleos.values())
 	escolha = st.selectbox("Escolha um núcleo:", opcoes)
 	
