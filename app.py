@@ -193,10 +193,10 @@ if menu == "🔍 Buscar por Instituto":
             st.session_state.nucleo_escolhido = exibir_nucleos()
 
         st.session_state.nucleo_escolhido = exibir_nucleos()
-		
-	if st.session_state.nucleo_escolhido and st.session_state.nucleo_escolhido != "nucleo_7":
+
+		if st.session_state.nucleo_escolhido and st.session_state.nucleo_escolhido != "nucleo_7":
 			st.info("Ainda não existem professores cadastrados para este núcleo.")
-		
+			
         if st.session_state.nucleo_escolhido == "nucleo_7":
             st.markdown("### Professores do núcleo de Óptica Quântica")
 
