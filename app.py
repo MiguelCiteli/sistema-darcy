@@ -221,11 +221,11 @@ elif menu == "🔐 Fazer Login":
         if nome:
             st.success(f"Bem-vindo(a), {nome}!")
 
-			st.markdown("### Criar um novo perfil")
+            st.markdown("### Criar um novo perfil")
             criar_perfil(nome)
-			
-			st.markdown("### Perfis Cadastrados")
-			carregar_perfis()
+
+            st.markdown("### Perfis Cadastrados")
+            carregar_perfis()
         else:
             st.error("Matrícula ou senha incorretas.")
 
