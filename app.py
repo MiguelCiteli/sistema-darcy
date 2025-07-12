@@ -189,10 +189,10 @@ if menu == "🔍 Buscar por Instituto":
         exibir_biografias()
         st.markdown("### Áreas de Pesquisa")
 
-		if "nucleo_escolhido" not in st.session_state:
-			st.session_state.nucleo_escolhido = ""
+	if "nucleo_escolhido" not in st.session_state:
+		st.session_state.nucleo_escolhido = ""
 
-		st.session_state.nucleo_escolhido = exibir_nucleos()
+	st.session_state.nucleo_escolhido = exibir_nucleos()
 
         if st.session_state.nucleo_escolhido and st.session_state.nucleo_escolhido != "nucleo_7":
             st.info("Ainda não existem professores cadastrados para este núcleo.")
