@@ -190,12 +190,12 @@ if menu == "🔍 Buscar por Instituto":
 	        st.session_state.nucleo_escolhido = ""
 	
 	    st.session_state.nucleo_escolhido = exibir_nucleos()
-
-		if "caio" in st.session_state.professor_escolhido:
-			info_caio_ribeiro()
-			criar_perfil("Caio Ribeiro")
-			st.markdown("### Perfis Cadastrados")
-			carregar_perfis()
+		
+	    if "caio" in st.session_state.professor_escolhido:
+		    info_caio_ribeiro()
+		    criar_perfil("Caio Ribeiro")
+		    st.markdown("### Perfis Cadastrados")
+		    carregar_perfis()
 	
 	    if st.session_state.nucleo_escolhido == "nucleo_7":
 	        st.markdown("### Professores do núcleo de Óptica Quântica")
