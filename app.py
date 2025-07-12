@@ -222,29 +222,54 @@ elif menu == "🔐 Fazer Login":
         st.session_state.usuario_logado = None
 
     if st.session_state.usuario_logado is None:
-        matricula = st.text_input("Matrícula")
-        senha = st.text_input("Senha", type="password")
 
-        if st.button("Entrar"):
-            nome = login(matricula, senha)
-            if nome:
-                st.session_state.usuario_logado = nome
-                st.success(f"Bem-vindo(a), {nome}!")
-            else:
-                st.error("Matrícula ou senha incorretas.")
+        aba = st.radio("Escolha uma opção:", ["🔐 Entrar", "📋 Fazer Cadastro"], horizontal=True)
 
-    else:
-        st.success(f"Você está logado como {st.session_state.usuario_logado}")
+        if aba == "🔐 Entrar":
+            matricula = st.text_input("Matrícula")
+            senha = st.text_input("Senha", type="password")
 
-        st.markdown("### Criar um novo perfil")
-        criar_perfil(st.session_state.usuario_logado)
+            if st.button("Entrar"):
+                nome = login(matricula, senha)
+                if nome:
+                    st.session_state.usuario_logado = nome
+                    st.success(f"Bem-vindo(a), {nome}!")
+                    st.experimental_rerun()
+                else:
+                    st.error("Matrícula ou senha incorretas.")
 
-        st.markdown("### Perfis Cadastrados")
-        carregar_perfis()
+        elif aba == "📋 Fazer Cadastro":
+            nome = st.text_input("Nome Completo")
+            nova_matricula = st.text_input("Nova Matrícula")
+            nova_senha = st.text_input("Nova Senha", type="password")
 
-        if st.button("Sair"):
-            st.session_state.usuario_logado = None
-            st.experimental_rerun()
+            if st.button("Cadastrar"):
+                if not nome or not nova_matricula or not nova_senha:
+                    st.warning("Preencha todos os campos para cadastrar.")
+                else:
+                    novo_usuario = {
+                        "nome": nome,
+                        "matricula": nova_matricula,
+                        "senha": nova_senha
+                    }
+
+                    caminho_usuarios = "usuarios.json"
+                    if os.path.exists(caminho_usuarios):
+                        with open(caminho_usuarios, "r") as f:
+                            try:
+                                usuarios = json.load(f)
+                            except json.JSONDecodeError:
+                                usuarios = []
+                    else:
+                        usuarios = []
+
+                    if any(u["matricula"] == nova_matricula for u in usuarios):
+                        st.warning("Já existe um usuário com essa matrícula.")
+                    else:
+                        usuarios.append(novo_usuario)
+                        with open(caminho_usuarios, "w") as f:
+                            json.dump(usuarios, f, indent=2, ensure_ascii=False)
+                        st.success("Cadastro realizado com sucesso! Agora faça login.")
 
 # --- OPÇÃO 3: VER TODOS OS PERFIS CADASTRADOS ---
 elif menu == "👨‍🎓 Ver Perfis":
