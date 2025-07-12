@@ -217,21 +217,29 @@ if menu == "🔍 Buscar por Instituto":
 # --- OPÇÃO 2: LOGIN E CRIAÇÃO DE PERFIL ---
 elif menu == "🔐 Fazer Login":
     st.subheader("Login para criação de perfil no grupo de pesquisa")
-    matricula = st.text_input("Matrícula")
-    senha = st.text_input("Senha", type="password")
 
-    if st.button("Entrar"):
-        nome = login(matricula, senha)
-        if nome:
-            st.success(f"Bem-vindo(a), {nome}!")
+    if "usuario_logado" not in st.session_state:
+        st.session_state.usuario_logado = None
 
-            st.markdown("### Criar um novo perfil")
-            criar_perfil(nome)
+    if st.session_state.usuario_logado is None:
+        matricula = st.text_input("Matrícula")
+        senha = st.text_input("Senha", type="password")
 
-            st.markdown("### Perfis Cadastrados")
-            carregar_perfis()
-        else:
-            st.error("Matrícula ou senha incorretas.")
+        if st.button("Entrar"):
+            nome = login(matricula, senha)
+            if nome:
+                st.session_state.usuario_logado = nome
+                st.success(f"Bem-vindo(a), {nome}!")
+            else:
+                st.error("Matrícula ou senha incorretas.")
+    else:
+        st.success(f"Você está logado como {st.session_state.usuario_logado}")
+
+        st.markdown("### Criar um novo perfil")
+        criar_perfil(st.session_state.usuario_logado)
+
+        st.markdown("### Perfis Cadastrados")
+        carregar_perfis()
 
 # --- OPÇÃO 3: VER TODOS OS PERFIS CADASTRADOS ---
 elif menu == "👨‍🎓 Ver Perfis":
