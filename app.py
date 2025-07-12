@@ -201,7 +201,6 @@ if menu == "🔍 Buscar por Instituto":
 	
 	        if "caio" in st.session_state.professor_escolhido:
 	            info_caio_ribeiro()
-	            criar_perfil("Caio Ribeiro")
 	        elif "alexandre" in st.session_state.professor_escolhido:
 	            st.info("Informações de Alexandre Dodonov ainda não disponíveis.")
 	        else:
