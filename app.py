@@ -240,12 +240,15 @@ elif menu == "🔐 Fazer Login":
 
         elif aba == "📋 Fazer Cadastro":
             nome = st.text_input("Nome Completo")
-            nova_matricula = st.text_input("Nova Matrícula")
-            nova_senha = st.text_input("Nova Senha", type="password")
+            nova_matricula = st.text_input("Matrícula")
+            nova_senha = st.text_input("Senha", type="password")
+            confirmar_senha = st.text_input("Confirmar Senha", type="password")
 
             if st.button("Cadastrar"):
-                if not nome or not nova_matricula or not nova_senha:
+                if not nome or not nova_matricula or not nova_senha or not confirmar_senha:
                     st.warning("Preencha todos os campos para cadastrar.")
+                elif nova_senha != confirmar_senha:
+                    st.error("As senhas não coincidem. Tente novamente.")
                 else:
                     novo_usuario = {
                         "nome": nome,
