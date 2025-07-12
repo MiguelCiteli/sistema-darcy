@@ -198,12 +198,6 @@ if menu == "🔍 Buscar por Instituto":
 	            st.session_state.professor_escolhido = ""
 	
 	        st.session_state.professor_escolhido = exibir_professores_otica()
-		    
-		    if "caio" in st.session_state.professor_escolhido:
-				info_caio_ribeiro()
-				criar_perfil("Caio Ribeiro")
-				st.markdown("### Perfis Cadastrados")
-				carregar_perfis()
 				
 	        elif "alexandre" in st.session_state.professor_escolhido:
 	            st.info("Informações de Alexandre Dodonov ainda não disponíveis.")
