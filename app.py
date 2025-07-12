@@ -204,8 +204,8 @@ if menu == "🔍 Buscar por Instituto":
 	            st.session_state.professor_escolhido = ""
 	
 	        st.session_state.professor_escolhido = exibir_professores_otica()
-				
-		        elif "alexandre" in st.session_state.professor_escolhido:
+	    
+	    	elif "alexandre" in st.session_state.professor_escolhido:
 		            st.info("Informações de Alexandre Dodonov ainda não disponíveis.")
 	        else:
 	            st.warning("Professor não encontrado.")
