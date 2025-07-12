@@ -210,6 +210,8 @@ if menu == "🔍 Buscar por Instituto":
 
             elif "alexandre" in st.session_state.professor_escolhido:
                 st.info("Informações de Alexandre Dodonov ainda não disponíveis.")
+				st.markdown("### Perfis Cadastrados")
+				carregar_perfis("perfis_alexandre.json")
             else:
                 st.warning("Professor não encontrado.")
 
