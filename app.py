@@ -270,9 +270,14 @@ elif menu == "🔐 Fazer Login":
                         st.warning("Já existe um usuário com essa matrícula.")
                     else:
                         usuarios.append(novo_usuario)
-                        with open(caminho_usuarios, "w") as f:
-                            json.dump(usuarios, f, indent=2, ensure_ascii=False)
-                        st.success("Cadastro realizado com sucesso! Agora faça login.")
+
+                        try:
+                            with open(caminho_usuarios, "w") as f:
+                                json.dump(usuarios, f, indent=2, ensure_ascii=False)
+                            st.success("Cadastro realizado com sucesso! Agora faça login.")
+                            st.write("✅ Usuário salvo no arquivo!")
+                        except Exception as e:
+                            st.error(f"Erro ao salvar: {e}")
 
 # --- OPÇÃO 3: VER TODOS OS PERFIS CADASTRADOS ---
 elif menu == "👨‍🎓 Ver Perfis":
