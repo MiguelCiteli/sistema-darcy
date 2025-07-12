@@ -189,8 +189,8 @@ if menu == "🔍 Buscar por Instituto":
         exibir_biografias()
         st.markdown("### Áreas de Pesquisa")
 
-	if "nucleo_escolhido" not in st.session_state:
-		st.session_state.nucleo_escolhido = ""
+        if "nucleo_escolhido" not in st.session_state:
+            st.session_state.nucleo_escolhido = ""
 
 	st.session_state.nucleo_escolhido = exibir_nucleos()
 
