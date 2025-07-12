@@ -201,6 +201,10 @@ if menu == "🔍 Buscar por Instituto":
 	
 	        if "caio" in st.session_state.professor_escolhido:
 	            info_caio_ribeiro()
+				criar_perfil("Caio Ribeiro")
+				st.markdown("### Perfis Cadastrados")
+				carregar_perfis()
+			
 	        elif "alexandre" in st.session_state.professor_escolhido:
 	            st.info("Informações de Alexandre Dodonov ainda não disponíveis.")
 	        else:
@@ -216,7 +220,12 @@ elif menu == "🔐 Fazer Login":
         nome = login(matricula, senha)
         if nome:
             st.success(f"Bem-vindo(a), {nome}!")
+
+			st.markdown("### Criar um novo perfil")
             criar_perfil(nome)
+			
+			st.markdown("### Perfis Cadastrados")
+			carregar_perfis()
         else:
             st.error("Matrícula ou senha incorretas.")
 
