@@ -209,7 +209,7 @@ if menu == "🔍 Buscar por Instituto":
                 carregar_perfis()
 
             elif "alexandre" in st.session_state.professor_escolhido:
-                st.info("Informações de Alexandre Dodonov ainda não disponíveis.")
+				st.info("Informações de Alexandre Dodonov ainda não disponíveis.")
 				st.markdown("### Perfis Cadastrados")
 				carregar_perfis("perfis_alexandre.json")
             else:
