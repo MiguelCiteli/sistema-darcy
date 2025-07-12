@@ -50,7 +50,7 @@ def exibir_nucleos():
     }
 
     opcoes = list(nucleos.values())
-    escolha = st.selectbox("Escolha um núcleo:", opcoes, key="selectbox_nucleos")
+    escolha = st.selectbox("Escolha um núcleo:", opcoes)
 
     for chave, valor in nucleos.items():
         if valor == escolha:
