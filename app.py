@@ -232,6 +232,7 @@ elif menu == "🔐 Fazer Login":
                 st.success(f"Bem-vindo(a), {nome}!")
             else:
                 st.error("Matrícula ou senha incorretas.")
+
     else:
         st.success(f"Você está logado como {st.session_state.usuario_logado}")
 
@@ -240,6 +241,10 @@ elif menu == "🔐 Fazer Login":
 
         st.markdown("### Perfis Cadastrados")
         carregar_perfis()
+
+        if st.button("Sair"):
+            st.session_state.usuario_logado = None
+            st.experimental_rerun()
 
 # --- OPÇÃO 3: VER TODOS OS PERFIS CADASTRADOS ---
 elif menu == "👨‍🎓 Ver Perfis":
