@@ -145,23 +145,26 @@ def login(matricula, senha):
             return usuario["nome"]
     return None
 
-def carregar_perfis():
-    if os.path.exists("perfis_caio.json"):
-        with open("perfis_caio.json", "r") as f:
+def carregar_perfis(arquivo="perfis_caio.json"):
+    if os.path.exists(arquivo):
+        with open(arquivo, "r") as f:
             try:
                 perfis = json.load(f)
             except json.JSONDecodeError:
                 st.warning("Erro ao carregar os perfis.")
                 return
 
-        for p in perfis:
-            st.markdown("---")
-            st.markdown(f"**👤 Nome:** {p.get('nome', 'N/A')}")
-            st.markdown(f"- **Nível:** {p.get('nível', 'N/A')}")
-            st.markdown(f"- **Tema da Pesquisa:** {p.get('tema', 'N/A')}")
-            for chave, valor in p.items():
-                if chave not in ["nome", "nível", "tema"]:
-                    st.markdown(f"- **{chave}:** {valor}")
+        if perfis:
+            for p in perfis:
+                st.markdown("---")
+                st.markdown(f"**👤 Nome:** {p.get('nome', 'N/A')}")
+                st.markdown(f"- **Nível:** {p.get('nível', 'N/A')}")
+                st.markdown(f"- **Tema da Pesquisa:** {p.get('tema', 'N/A')}")
+                for chave, valor in p.items():
+                    if chave not in ["nome", "nível", "tema"]:
+                        st.markdown(f"- **{chave}:** {valor}")
+        else:
+            st.info("Nenhum perfil cadastrado ainda.")
     else:
         st.info("Nenhum perfil cadastrado ainda.")
 
