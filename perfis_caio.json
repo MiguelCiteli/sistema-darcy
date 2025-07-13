@@ -6,26 +6,32 @@
   },
   { 
     "nome": "Giulia",
-    "tema": "?"
+    "tema": "?",
+    "foto": "imagens/giulia.jpeg"
   },
   { 
     "nome": "Patrick Oliveira",
-    "tema": "Colapso Gravitacional com Correções da QED"
+    "tema": "Colapso Gravitacional com Correções da QED",
+    "foto": "imagens/patrick.jpeg"
   },
   { 
     "nome": "Carine",
-    "tema": "?"
+    "tema": "?",
+    "foto": "imagens/carine.jpeg"
   },
   { 
     "nome": "Roger Rezende Pinheiro Marzagao",
-    "tema": "Efeito Casimir em D dimensões"
+    "tema": "Efeito Casimir em D dimensões",
+    "foto": "imagens/roger.jpeg"
   },
   { 
     "nome": "Vitória Alves de Souza",
-    "tema": "Efeito Casimir para o campo escalar"
+    "tema": "Efeito Casimir para o campo escalar",
+    "foto": "imagens/vitoria.jpeg"
   },
   { 
     "nome": "Hugo Diniz de Souza",
     "tema": "O despertar do vácuo em objetos compactos"
+    "foto": "imagens/hugo.jpeg"
   }
 ]
