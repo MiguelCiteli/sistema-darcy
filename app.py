@@ -68,9 +68,9 @@ def info_caio_ribeiro():
     st.markdown("- **Google Scholar:** https://scholar.google.com/citations?user=mR3sBh0AAAAJ&hl=pt-BR&oi=ao")
 
     st.markdown("#### Artigos Recentes")
-    st.markdown("- *Electric current quantum superpositions in superconducting circuits* (Physics Letters A, 2025)")
-    st.markdown("- *Probing cosmic expansion through small anisotropies in a Bose-Einstein condensate analogue* (arXiv, 2025)")
-    st.markdown("- *Energy conservation and quantum backreaction in Bose-Einstein condensates* (Physical Review A, 2025)")
+    st.markdown("- *Electric current quantum superpositions in superconducting circuits* (Physics Letters A, 2025) (https://www.sciencedirect.com/science/article/abs/pii/S0375960125003792)")
+    st.markdown("- *Probing cosmic expansion through small anisotropies in a Bose-Einstein condensate analogue* (arXiv, 2025) (https://arxiv.org/abs/2504.21236)")
+    st.markdown("- *Energy conservation and quantum backreaction in Bose-Einstein condensates* (Physical Review A, 2025) (https://journals.aps.org/pra/abstract/10.1103/PhysRevA.111.023306)")
 
     st.markdown("#### Linhas de Pesquisa")
     st.markdown("- **Vácuo quântico em condensados de Bose-Einstein**")
