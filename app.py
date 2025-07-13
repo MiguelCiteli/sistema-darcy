@@ -105,7 +105,7 @@ def criar_perfil(nome_usuario):
     if st.button("Criar Perfil", key="botao_criar"):
         perfil = {
             "nome": nome_usuario,
-            "tema": tema,
+            "tema": tema
         }
 
         if not os.path.exists("perfis_caio.json"):
