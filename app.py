@@ -184,8 +184,16 @@ if menu == "🔍 Buscar por Instituto":
     if st.session_state.busca_realizada:
         st.markdown("🔗 [Site Oficial do IF](https://if.unb.br/)")
         st.markdown("### História do Instituto de Física")
+        st.markdown(
+            f"<div style='text-align: justify'>{texto}</div>",
+            unsafe_allow_html=True
+        )
         exibir_historia_if()
         st.markdown("### Biografias Selecionadas")
+        st.markdown(
+            f"<div style='text-align: justify'>{biografias}</div>",
+            unsafe_allow_html=True
+        )
         exibir_biografias()
         st.markdown("### Áreas de Pesquisa")
 
