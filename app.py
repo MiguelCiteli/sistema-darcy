@@ -92,20 +92,33 @@ def info_caio_ribeiro():
     st.markdown(descricao2) 
 
     st.markdown("#### Grupo de Pesquisa")
-    carregar_perfis()
     doutorado = ["Miguel Citeli", "Giulia"]
-    mestrado = ["Patrick Oliveira", "Carine"] 
+    mestrado = ["Patrick Oliveira", "Carine"]
     graduacao = [
-    "Roger Rezende Pinheiro Marzagao",
-    "Vitória Alves de Souza",
-    "Hugo Diniz de Souza"
+        "Roger Rezende Pinheiro Marzagao",
+        "Vitória Alves de Souza",
+        "Hugo Diniz de Souza"
     ]
 
+    # Tenta carregar os perfis
+    try:
+        with open("perfis_caio.json", "r") as f:
+            alunos = json.load(f)
+    except Exception as e:
+        st.error(f"Erro ao carregar perfis: {e}")
+        alunos = []
+
+    # Função para exibir por nível
     def exibir_por_nivel(titulo, nomes):
-    st.markdown(f"## {titulo}")
-    for aluno in alunos:
-        if aluno["nome"] in nomes:
-            st.markdown(f"- **{aluno['nome']}**: {aluno['tema']}")
+        st.markdown(f"## {titulo}")
+        for aluno in alunos:
+            if aluno["nome"] in nomes:
+                st.markdown(f"- **{aluno['nome']}**: {aluno['tema']}")
+
+    # Exibir as seções
+    exibir_por_nivel("Doutorado", doutorado)
+    exibir_por_nivel("Mestrado", mestrado)
+    exibir_por_nivel("Graduação", graduacao)
 	
 def criar_perfil(nome_usuario):
     st.subheader("Criação de Perfil")
