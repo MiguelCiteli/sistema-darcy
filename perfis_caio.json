@@ -1,9 +1,28 @@
 [
-  {
+  { "Doutorado"
+  }
+]
+
+[
+  { 
     "nome": "Miguel Citeli",
-    "nível": "Doutorado",
-    "tema": "Assunto",
-    "Instituição": "UnB",
+    "tema": "Impacto de Correlações Quânticas em Sistemas do tipo Casimir",
+    "Ano de Ingresso": "2024"
+  }
+]
+
+[
+  { 
+    "nome": "Miguel Citeli",
+    "tema": "Impacto de Correlações Quânticas em Sistemas do tipo Casimir",
+    "Ano de Ingresso": "2024"
+  }
+]
+
+[
+  { 
+    "nome": "Miguel Citeli",
+    "tema": "Impacto de Correlações Quânticas em Sistemas do tipo Casimir",
     "Ano de Ingresso": "2024"
   }
 ]
