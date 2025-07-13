@@ -110,18 +110,18 @@ def info_caio_ribeiro():
 
     # Função para exibir por nível
     def exibir_por_nivel(titulo, nomes):
-    st.markdown(f"##### {titulo}")
-    for aluno in alunos:
-        if aluno["nome"] in nomes:
-            col1, col2 = st.columns([1, 5])
-            with col1:
-                if "foto" in aluno and os.path.exists(aluno["foto"]):
-                    st.image(aluno["foto"], width=80)
-                else:
-                    st.image("fotos/padrao.jpg", width=80)  # imagem padrão
-            with col2:
-                st.markdown(f"**{aluno['nome']}**")
-                st.markdown(f"*Tema:* {aluno['tema']}")
+        st.markdown(f"##### {titulo}")
+        for aluno in alunos:
+            if aluno["nome"] in nomes:
+                col1, col2 = st.columns([1, 5])
+                with col1:
+                    if "foto" in aluno and os.path.exists(aluno["foto"]):
+                        st.image(aluno["foto"], width=80)
+                    else:
+                        st.image("fotos/padrao.jpg", width=80)  # imagem padrão
+                with col2:
+                    st.markdown(f"**{aluno['nome']}**")
+                    st.markdown(f"*Tema:* {aluno['tema']}")
 
     # Exibir as seções
     exibir_por_nivel("Doutorado", doutorado)
