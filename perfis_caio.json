@@ -2,14 +2,29 @@
   { 
     "nome": "Miguel Citeli",
     "tema": "Impacto de Correlações Quânticas em Sistemas do tipo Casimir"
-  }
-],
-
-
-[
+  },
   { 
     "nome": "Giulia",
     "tema": "?"
+  },
+  { 
+    "nome": "Patrick Oliveira",
+    "tema": "Colapso Gravitacional com Correções da QED"
+  },
+  { 
+    "nome": "Carine",
+    "tema": "?"
+  },
+  { 
+    "nome": "Roger Rezende Pinheiro Marzagao",
+    "tema": "Efeito Casimir em D dimensões"
+  },
+  { 
+    "nome": "Vitória Alves de Souza",
+    "tema": "Efeito Casimir para o campo escalar"
+  },
+  { 
+    "nome": "Hugo Diniz de Souza",
+    "tema": "O despertar do vácuo em objetos compactos"
   }
 ]
-
