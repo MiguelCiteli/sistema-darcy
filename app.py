@@ -105,7 +105,6 @@ def criar_perfil(nome_usuario):
     if st.button("Criar Perfil", key="botao_criar"):
         perfil = {
             "nome": nome_usuario,
-            "nível": nivel,
             "tema": tema,
         }
 
