@@ -20,7 +20,7 @@ def exibir_historia_if():
 
     Em um estudo recente realizado pela Universidade de Stanford, foi feito um levantamento de pesquisadores de todas as áreas e a UnB teve 25 professores, sendo 2 do Instituto de Física, entre os melhores do mundo.
     """
-    st.markdown(texto)
+    st.markdown("<div style='text-align: justify'>" + texto + "</div>", unsafe_allow_html=True)
 	
 def exibir_biografias():
     biografias = """
@@ -32,7 +32,7 @@ def exibir_biografias():
 
     Roberto Salmeron - Em colaboração com o CERN, esteve na primeira detecção dos neutrinos do elétron e do múon, partículas fundamentais do Modelo Padrão. Teve uma importante participação nos anos iniciais da UnB como diretor do Instituto Central de Ciências (ICC), do qual faziam parte os institutos de Física, Química e Biologia e o departamento de Matemática. Salmeron nasceu em 16 de Julho de 1922, em São Paulo.
     """
-    st.markdown(biografias)
+    st.markdown("<div style='text-align: justify'>" + biografias + "</div>", unsafe_allow_html=True)
 
 def exibir_nucleos():
     nucleos = {
@@ -184,16 +184,8 @@ if menu == "🔍 Buscar por Instituto":
     if st.session_state.busca_realizada:
         st.markdown("🔗 [Site Oficial do IF](https://if.unb.br/)")
         st.markdown("### História do Instituto de Física")
-        st.markdown(
-            f"<div style='text-align: justify'>{texto}</div>",
-            unsafe_allow_html=True
-        )
         exibir_historia_if()
         st.markdown("### Biografias Selecionadas")
-        st.markdown(
-            f"<div style='text-align: justify'>{biografias}</div>",
-            unsafe_allow_html=True
-        )
         exibir_biografias()
         st.markdown("### Áreas de Pesquisa")
 
