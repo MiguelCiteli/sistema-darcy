@@ -90,7 +90,8 @@ def info_caio_ribeiro():
     Neste projeto propomos estudar o efeito Browniano quântico em sistemas do tipo Casimir, no qual partículas que interagem com o campo adquirem dispersão em suas velocidades devido a transições entre estados de vácuo.
     """
     st.markdown(descricao2) 
-    
+
+    st.markdown("#### Grupo de Pesquisa")
     carregar_perfis()
 	
 def criar_perfil(nome_usuario):
