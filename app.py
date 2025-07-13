@@ -118,7 +118,7 @@ def info_caio_ribeiro():
                     if "foto" in aluno and os.path.exists(aluno["foto"]):
                         st.image(aluno["foto"], width=80)
                     else:
-                        st.image("fotos/padrao.jpg", width=80)  # imagem padrão
+                        st.image("imagens/padrao.jpg", width=80)  
                 with col2:
                     st.markdown(f"**{aluno['nome']}**")
                     st.markdown(f"*Tema:* {aluno['tema']}")
