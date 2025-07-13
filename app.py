@@ -64,8 +64,8 @@ def exibir_professores_otica():
 def info_caio_ribeiro():
     st.markdown("### 📚 Informações sobre Caio Ribeiro")
     st.markdown("- **Contato:** caio.ribeiro@unb.br")
-    st.markdown("- **Lattes:** [Link](http://lattes.cnpq.br/6459107436866263)")
-    st.markdown("- **Google Scholar:** [Link](https://scholar.google.com/citations?user=mR3sBh0AAAAJ&hl=pt-BR&oi=ao)")
+    st.markdown("- **Lattes:** (http://lattes.cnpq.br/6459107436866263)")
+    st.markdown("- **Google Scholar:** (https://scholar.google.com/citations?user=mR3sBh0AAAAJ&hl=pt-BR&oi=ao)")
 
     st.markdown("#### Artigos Recentes")
     st.markdown("- *Electric current quantum superpositions in superconducting circuits* (Physics Letters A, 2025)")
