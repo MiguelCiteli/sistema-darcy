@@ -115,7 +115,7 @@ def info_caio_ribeiro():
                 col1, col2 = st.columns([1, 5])
                 with col1:
                     try:
-		                st.image(aluno["foto"], width=80)
+                        st.image(aluno["foto"], width=80)
                     except:
                         st.warning("Foto não disponível.")
 
