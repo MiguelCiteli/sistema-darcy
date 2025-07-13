@@ -117,7 +117,7 @@ def info_caio_ribeiro():
                     try:
                         st.image(aluno["foto"], width=80)
                     except:
-                        st.image("imagens/padrao.jpg", width=80)
+                        st.image("imagens/padrao.png", width=80)
                 with col2:
                     st.markdown(f"**{aluno['nome']}**")
                     st.markdown(f"*Tema:* {aluno['tema']}")
