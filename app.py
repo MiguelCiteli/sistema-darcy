@@ -116,7 +116,7 @@ def info_caio_ribeiro():
                 with col1:
                     try:
     		        st.image(aluno["foto"], width=80)
-	            except:
+                    except:
 			st.warning("Foto não disponível.")
 
                 with col2:
