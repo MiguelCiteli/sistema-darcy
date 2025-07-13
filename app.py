@@ -93,6 +93,19 @@ def info_caio_ribeiro():
 
     st.markdown("#### Grupo de Pesquisa")
     carregar_perfis()
+    doutorado = ["Miguel Citeli", "Giulia"]
+    mestrado = ["Patrick Oliveira", "Carine"] 
+    graduacao = [
+    "Roger Rezende Pinheiro Marzagao",
+    "Vitória Alves de Souza",
+    "Hugo Diniz de Souza"
+    ]
+
+    def exibir_por_nivel(titulo, nomes):
+    st.markdown(f"## {titulo}")
+    for aluno in alunos:
+        if aluno["nome"] in nomes:
+            st.markdown(f"- **{aluno['nome']}**: {aluno['tema']}")
 	
 def criar_perfil(nome_usuario):
     st.subheader("Criação de Perfil")
