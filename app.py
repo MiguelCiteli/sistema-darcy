@@ -7,7 +7,7 @@ import streamlit as st
 st.set_page_config(page_title="Sistema Darcy Ribeiro", layout="centered")
 
 st.markdown("# Seja bem-vindo ao Sistema Integrado Darcy Ribeiro!")
-st.markdown("### 🔬 Explore os institutos, crie perfis e conheça as linhas de pesquisa.")
+st.markdown("### 🔬 Conheça Departamentos, Institutos e Faculdades da Universidade de Brasília.")
 
 # --- MENU LATERAL ---
 menu = st.sidebar.radio("Menu", ["🔍 Buscar por Instituto", "🔐 Fazer Login", "👨‍🎓 Ver Perfis"])
@@ -107,11 +107,6 @@ def criar_perfil(nome_usuario):
             "nome": nome_usuario,
             "tema": tema,
         }
-
-        if instituicao:
-            perfil["Instituição"] = instituicao
-        if ano:
-            perfil["Ano de Ingresso"] = ano
 
         if not os.path.exists("perfis_caio.json"):
             with open("perfis_caio.json", "w") as f:
