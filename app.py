@@ -117,7 +117,7 @@ def info_caio_ribeiro():
                     try:
     		        st.image(aluno["foto"], width=80)
                     except:
-			st.warning("Foto não disponível.")
+                        st.warning("Foto não disponível.")
 
                 with col2:
                     st.markdown(f"**{aluno['nome']}**")
