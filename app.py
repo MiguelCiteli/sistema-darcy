@@ -176,7 +176,7 @@ if menu == "🔍 Buscar por Instituto":
         st.session_state.busca_realizada = any(p in consulta for p in palavras_chave)
     
     if st.session_state.busca_realizada:
-	st.markdown("### Site Oficial do IF")
+        st.markdown("### Site Oficial do IF")
         st.markdown("https://if.unb.br/")
         st.markdown("### História do Instituto de Física")
         exibir_historia_if()
