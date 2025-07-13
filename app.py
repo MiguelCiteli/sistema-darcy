@@ -99,8 +99,8 @@ def criar_perfil(nome_usuario):
 
     nivel = st.selectbox("Nível", ["Graduação", "Mestrado", "Doutorado"])
     tema = st.text_input("Tema da Pesquisa")
-    instituicao = st.text_input("Instituição (opcional)")
-    ano = st.text_input("Ano de Ingresso (opcional)")
+    #instituicao = st.text_input("Instituição (opcional)")
+    #ano = st.text_input("Ano de Ingresso (opcional)")
 
     if st.button("Criar Perfil", key="botao_criar"):
         perfil = {
@@ -153,10 +153,9 @@ def carregar_perfis(arquivo="perfis_caio.json"):
             for p in perfis:
                 st.markdown("---")
                 st.markdown(f"**👤 Nome:** {p.get('nome', 'N/A')}")
-                st.markdown(f"- **Nível:** {p.get('nível', 'N/A')}")
                 st.markdown(f"- **Tema da Pesquisa:** {p.get('tema', 'N/A')}")
                 for chave, valor in p.items():
-                    if chave not in ["nome", "nível", "tema"]:
+                    if chave not in ["nome", "tema"]:
                         st.markdown(f"- **{chave}:** {valor}")
         else:
             st.info("Nenhum perfil cadastrado ainda.")
@@ -177,7 +176,8 @@ if menu == "🔍 Buscar por Instituto":
         st.session_state.busca_realizada = any(p in consulta for p in palavras_chave)
     
     if st.session_state.busca_realizada:
-        st.markdown("🔗 [Site Oficial do IF](https://if.unb.br/)")
+	st.markdown("### Site Oficial do IF")
+        st.markdown("https://if.unb.br/")
         st.markdown("### História do Instituto de Física")
         exibir_historia_if()
         st.markdown("### Biografias Selecionadas")
