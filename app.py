@@ -13,17 +13,17 @@ st.markdown("### 🔬 Explore os institutos, crie perfis e conheça as linhas de
 menu = st.sidebar.radio("Menu", ["🔍 Buscar por Instituto", "🔐 Fazer Login", "👨‍🎓 Ver Perfis"])
 
 def exibir_historia_if():
-    texto = """
+    texto = textwrap.dedent("""
     O Instituto de Física (IF) foi um dos primeiros institutos da Universidade de Brasília. Seu desenvolvimento contou com a participação de físicos como José Leite Lopes, Roberto Salmeron e Jayme Tiomno, além do apoio do Centro Brasileiros de Pesquisas Físicas (CBPF), que em diversas reuniões com Darcy Ribeiro e Anísio Teixeira, fundadores da UnB, definiram as diretrizes do curso.
 
     Após o golpe militar de 1964, que causou a demissão em massa de praticamente todo o corpo docente da UnB, coube a José Acioli, Luiz Carlos Gomes e José Carlos Azevedo a difícil missão de reerguer o IF.
 
     Em um estudo recente realizado pela Universidade de Stanford, foi feito um levantamento de pesquisadores de todas as áreas e a UnB teve 25 professores, sendo 2 do Instituto de Física, entre os melhores do mundo.
-    """
-    st.markdown("<div style='text-align: justify'>" + texto + "</div>", unsafe_allow_html=True)
+    """)
+    st.markdown(f"<div style='text-align: justify'>{texto}</div>", unsafe_allow_html=True)
 	
 def exibir_biografias():
-    biografias = """
+    biografias = textwrap.dedent("""
     Darcy Ribeiro - Além de ter sido um dos principais fundadores da Universidade de Brasília, Darcy Ribeiro liderou o projeto da construção de quase 500 colégios públicos de ensino integral em todo o estado do Rio de Janeiro, os chamados CIEPs, entre 1983 e 1987, período no qual foi vice-governador. Nesta mesma época, criou o Sambódromo, que não só servia como espaço para o desfile das escolas de samba durante o Carnaval, mas também onde funcionavam mais de 200 salas de aula construídas embaixo das arquibancadas. Logo após a conclusão do curso de Antropologia, passou 10 anos convivendo com povos indígenas, estudando especialmente os povos Kadiwéu, Urubu Ka’apor, Ofayé, Bororo e Guarani. Criou também o Parque Indígena do Xingu, o Museu do Índio e o Memorial da América Latina. Foi preso e exilado durante a ditadura militar, tendo vivido por 12 anos entre o Uruguai, Venezuela, Chile, Peru e México. Nascido em 26 de Outubro de 1922 em Montes Claros, Minas Gerais, Darcy foi antropólogo, educador, escritor e político.
 
     Anísio Teixeira - Considerado o fundador da primeira escola pública de ensino integral do Brasil, a Escola Parque inaugurada na Bahia em 1950, Anísio Teixeira foi um dos idealizadores da Escola Nova, movimento educacional de grande projeção no século XX, que propunha que a ``educação deve ser essencialmente pública, obrigatória, gratuita, leiga e sem qualquer segregação de cor, sexo ou tipo de estudo, e desenvolver-se em estreita vinculação com as comunidades.'' Ao lado de Darcy Ribeiro, contribuiu não só no projeto da Universidade de Brasília, mas também na elaboração da Lei de Diretrizes e Bases da Educação. Anísio Teixeira nasceu em Caetité, na Bahia, em 12 de Julho de 1900.
@@ -31,8 +31,8 @@ def exibir_biografias():
     José Leite Lopes - Foi o primeiro físico a predizer a existência do bóson Z, partícula mediadora de uma das quatro forças fundamentais da natureza, a força fraca. Ao lado de César Lattes, ajudou a construir o CBPF, um dos principais centros de pesquisa em física do país e que abrigou físicos como Jayme Tiomno, Mário Schenberg, Richard Feynman e David Bohm. Nasceu em Recife, Pernambuco, em 28 de Outubro de 1918.
 
     Roberto Salmeron - Em colaboração com o CERN, esteve na primeira detecção dos neutrinos do elétron e do múon, partículas fundamentais do Modelo Padrão. Teve uma importante participação nos anos iniciais da UnB como diretor do Instituto Central de Ciências (ICC), do qual faziam parte os institutos de Física, Química e Biologia e o departamento de Matemática. Salmeron nasceu em 16 de Julho de 1922, em São Paulo.
-    """
-    st.markdown("<div style='text-align: justify'>" + biografias + "</div>", unsafe_allow_html=True)
+    """)
+    st.markdown(f"<div style='text-align: justify'>{biografias}</div>", unsafe_allow_html=True)
 
 def exibir_nucleos():
     nucleos = {
