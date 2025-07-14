@@ -74,22 +74,22 @@ def info_caio_ribeiro():
 
     st.markdown("#### Linhas de Pesquisa")
     st.markdown("- **Vácuo quântico em condensados de Bose-Einstein**")
-    descricao1 = """
+    descricao1 = textwrap.dedent("""
     Neste projeto buscamos estudar manifestações do vácuo quântico em condensados de Bose-Einstein, sistemas que ocupam posição estratégica na ciência e no ensino de ciência por suas propriedades peculiares e seu caráter multidisciplinar.
 
     De forma específica, estamos interessados em estudar o backreaction quântico em sistemas análogos e nas modificações oriundas de interações de longo alcance, como, por exemplo, ocorre quando os bósons possuem momento de dipolo elétrico ou magnético.
 
     Este projeto é executado no âmbito do grupo de pesquisa Óptica Quântica Teórica.
-    """
-    st.markdown(descricao1)
+    """)
+    st.markdown(f"<div style='text-align: justify'>{descricao1}</div>", unsafe_allow_html=True)
 
     st.markdown("- **Flutuações do vácuo em sistemas do tipo Casimir**")  
-    descricao2 = """
+    descricao2 = textwrap.dedent("""
     Em distinção à concepção clássica de vácuo, a modificação do estado de vácuo de algum campo quântico produz efeitos observáveis, como por exemplo o celebrado efeito Casimir.
 
     Neste projeto propomos estudar o efeito Browniano quântico em sistemas do tipo Casimir, no qual partículas que interagem com o campo adquirem dispersão em suas velocidades devido a transições entre estados de vácuo.
-    """
-    st.markdown(descricao2) 
+    """)
+    st.markdown(f"<div style='text-align: justify'>{descricao2}</div>", unsafe_allow_html=True)
 
     st.markdown("#### Grupo de Pesquisa")
     doutorado = ["Miguel Citeli", "Giulia Aleixo"]
