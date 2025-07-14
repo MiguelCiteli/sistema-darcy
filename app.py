@@ -6,7 +6,7 @@ import streamlit as st
 
 st.set_page_config(page_title="Sistema Darcy Ribeiro", layout="centered")
 
-st.markdown("# Seja bem-vindo ao Sistema Integrado Darcy Ribeiro!")
+st.markdown("# Bem-vindo ao Sistema Integrado Darcy Ribeiro!")
 st.markdown("### 🔬 Conheça Departamentos, Institutos e Faculdades da Universidade de Brasília")
 
 # --- MENU LATERAL ---
