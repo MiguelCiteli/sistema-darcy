@@ -222,7 +222,7 @@ if menu == "🔍 Buscar por Instituto":
             st.info("Ainda não existem professores cadastrados para este núcleo.")
 
         if st.session_state.nucleo_escolhido == "nucleo_7":
-            st.markdown("### Professores do núcleo de Óptica Quântica")
+            st.markdown("### Professores do Núcleo de Óptica Quântica")
 
             if "professor_escolhido" not in st.session_state:
                 st.session_state.professor_escolhido = ""
