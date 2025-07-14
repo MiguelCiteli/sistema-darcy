@@ -78,8 +78,6 @@ def info_caio_ribeiro():
     Neste projeto buscamos estudar manifestações do vácuo quântico em condensados de Bose-Einstein, sistemas que ocupam posição estratégica na ciência e no ensino de ciência por suas propriedades peculiares e seu caráter multidisciplinar.
 
     De forma específica, estamos interessados em estudar o backreaction quântico em sistemas análogos e nas modificações oriundas de interações de longo alcance, como, por exemplo, ocorre quando os bósons possuem momento de dipolo elétrico ou magnético.
-
-    Este projeto é executado no âmbito do grupo de pesquisa Óptica Quântica Teórica.
     """)
     st.markdown(f"<div style='text-align: justify'>{descricao1}</div>", unsafe_allow_html=True)
 
